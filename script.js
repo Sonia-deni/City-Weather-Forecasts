@@ -1,4 +1,5 @@
 var cities = ["Manchester", "Bangkok", "Przemysl", "Edinburgh", "Dublin"];
+var APIKey = "fab2f8aed7f362e666aa16a01a05d5ed";
 
 function renderButtons() {
   $(".weather-hr").empty();
@@ -7,19 +8,35 @@ function renderButtons() {
 
     var a = $("<button>");
     a.addClass("city-button");
+   
     a.attr("data-name", cities[i]);
     a.text(cities[i]);
     $(".weather-hr").append(a);
   }
 }
 
-$("button").on("click", function (e) {
-    e.preventDefault();
-
-    var APIKey = "fab2f8aed7f362e666aa16a01a05d5ed";
+$(".search-button").on("click", function (event) {
+    event.preventDefault();
     var city = $('#search-input').val().trim();
-    cities.push(city);
-    renderButtons();
+    if(city){
+        cities.push(city);
+        getCityWeather(city);
+    }
+    else{
+        alert("Nothing in search box");
+    }
+
+   $(".city-button").on("click", function (event) {
+        event.preventDefault();
+        var city = $(this).attr("data-name");
+        getCityWeather(city);
+    });
+
+});
+
+renderButtons();
+
+function getCityWeather(city){
     var queryURLGeo = "https://api.openweathermap.org/data/2.5/weather?q="+ city + "&appid=" + APIKey;
 
     $.ajax({
@@ -42,6 +59,6 @@ $("button").on("click", function (e) {
             }
         });
     });
-});
 
-renderButtons();
+
+}
