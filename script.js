@@ -30,6 +30,7 @@ $(".search-button").on("click", function (event) {
         event.preventDefault();
         var city = $(this).attr("data-name");
         getCityWeather(city);
+      
     });
 
 });
@@ -45,20 +46,32 @@ function getCityWeather(city){
     }).then(function(response) {
         lat = response.coord.lat;
         lon = response.coord.lon;
-
-        console.log(lat + "   " + lon);
+        
         var queryURLWeather = "https://api.openweathermap.org/data/2.5/forecast?lat="+ lat + "&lon="+ lon +"&appid=" + APIKey;
         $.ajax({
             url: queryURLWeather,
             method: "GET"
         }).then(function(response) {
-           // console.log(response);
            var fiveDay = response.list;
-            for(var i=0; i<fiveDay.length; i= i+8){
-                console.log(fiveDay[i]);
+           var weatherDay = []; //create array to hold the weather objects
+           console.log(fiveDay);
+            for(var i=4; i<fiveDay.length; i= i+8){ //get the data at 12pm every day
+                    weatherDay[i] = {
+                    date: fiveDay[i].dt_txt,
+                    icon: fiveDay[i].weather.icon,
+                    temp: fiveDay[i].main.temp,
+                    wind: fiveDay[i].wind.speed,
+                    humidity: fiveDay[i].main.humidity
+                }
             }
+            console.log(weatherDay);
         });
     });
+    
+
+}
+
+function displayWeather(){
 
 
 }
