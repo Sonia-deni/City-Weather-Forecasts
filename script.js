@@ -46,32 +46,40 @@ function getCityWeather(city){
     }).then(function(response) {
         lat = response.coord.lat;
         lon = response.coord.lon;
-        
+        $('.city-today').text(city);
+        var currentTime = moment().format("DD MMM YYYY");
+        $('.date-today').text(currentTime);
+        $('.icon-today').text(response.weather.icon);
+        $('.temp-today').text("Temperature: " + response.main.temp + " °C");
+        $('.wind-today').text("Wind Speed: " + response.wind.speed + " KPH");
+        $('.humidity-today').text("Humidity: " + response.main.humidity + "%");
+
         var queryURLWeather = "https://api.openweathermap.org/data/2.5/forecast?lat="+ lat + "&lon="+ lon +"&appid=" + APIKey;
         $.ajax({
             url: queryURLWeather,
             method: "GET"
         }).then(function(response) {
            var fiveDay = response.list;
-           var weatherDay = []; //create array to hold the weather objects
-           console.log(fiveDay);
-            for(var i=4; i<fiveDay.length; i= i+8){ //get the data at 12pm every day
-                    weatherDay[i] = {
-                    date: fiveDay[i].dt_txt,
-                    icon: fiveDay[i].weather.icon,
-                    temp: fiveDay[i].main.temp,
-                    wind: fiveDay[i].wind.speed,
-                    humidity: fiveDay[i].main.humidity
-                }
-            }
-            console.log(weatherDay);
+           displayWeatherForecast(fiveDay);
         });
     });
+}
+
+//need to loop through the array and set the data to each of the textbox.
+function displayWeatherForecast(fiveDay){
+    var weatherDay = []; //create array to hold the weather objects
+   // console.log(fiveDay);
+        for(var i=4; i<fiveDay.length; i= i+8){ 
+            weatherDay[i] = {
+                date: fiveDay[i].dt_txt,
+                icon: fiveDay[i].weather.icon,
+                temp: fiveDay[i].main.temp,
+                wind: fiveDay[i].wind.speed,
+                humidity: fiveDay[i].main.humidity
+            }
+
     
-
-}
-
-function displayWeather(){
-
-
-}
+            }
+        }
+    
+    

@@ -19,7 +19,7 @@
   <!-- max-width for ultra wide resolutions -->
   <div class="container-fluid" style="max-width: 1400px">
     <div class="row">
-      <aside class="col-lg-3 pb-3">
+      <aside class="col-lg-2 pb-3">
         <h2 id="form-heading" class="mt-1 h3 form-label">
           Search for a City:
         </h2>
@@ -40,52 +40,65 @@
         <div class="list-group" id="history"></div>
       </aside>
 
-      <div class="col-lg-9 pb-3">
+      <div class="col-lg-10 pb-3">
         <section id="today" class="mt-3" role="region" aria-live="polite">
-          <div class="jumbotron jumbotron-fluid">
-            <div class="container">
-              <h1 class="display-4">Today</h1>
-              <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+            <div class="container today">
+              <h1 class="city-today">Today</h1>
+              <h4 class="date-today">date</h4>
+              <h5 class="icon-today">icon</h5>
+              <p class="temp-today">temp</p>
+              <p class="wind-today">wind speed</p>
+              <p class="humidity-today">humidity</p>
             </div>
-          </div>
+         
         </section>
-        <section id="forecast" class="row mt-3" role="region" aria-live="polite">
-          <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
-            <div class="card-header">Header</div>
+        <h2>5-Day Forecast: </h2>
+        <section id="forecast" class="row mt-3 weather-cards" role="region" aria-live="polite">
+          <div id="day1" class="card text-white bg-info mb-3" style="max-width: 18rem;">
             <div class="card-body">
-              <h5 class="card-title">Info card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <h4 class="date">date</h4>
+              <h5 class="icon">icon</h5>
+              <p class="temp">temp</p>
+              <p class="wind">wind speed</p>
+              <p class="humidity">humidity</p>
             </div>
           </div>
-          <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
-            <div class="card-header">Header</div>
+          <div id="day2" class="card text-white bg-info mb-3" style="max-width: 18rem;">
             <div class="card-body">
-              <h5 class="card-title">Info card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-          </div><div class="card text-white bg-info mb-3" style="max-width: 18rem;">
-            <div class="card-header">Header</div>
-            <div class="card-body">
-              <h5 class="card-title">Info card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-          </div><div class="card text-white bg-info mb-3" style="max-width: 18rem;">
-            <div class="card-header">Header</div>
-            <div class="card-body">
-              <h5 class="card-title">Info card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-          </div><div class="card text-white bg-info mb-3" style="max-width: 18rem;">
-            <div class="card-header">Header</div>
-            <div class="card-body">
-              <h5 class="card-title">Info card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <h4 class="date">date</h4>
+              <h5 class="icon">icon</h5>
+              <p class="temp">temp</p>
+              <p class="wind">wind speed</p>
+              <p class="humidity">humidity</p>
             </div>
           </div>
-
-
-
-
+          <div id="day3" class="card text-white bg-info mb-3" style="max-width: 18rem;">
+            <div class="card-body">
+              <h4 class="date">date</h4>
+              <h5 class="icon">icon</h5>
+              <p class="temp">temp</p>
+              <p class="wind">wind speed</p>
+              <p class="humidity">humidity</p>
+            </div>
+          </div>
+          <div id="day4" class="card text-white bg-info mb-3" style="max-width: 18rem;">
+            <div class="card-body">
+              <h4 class="date">date</h4>
+              <h5 class="icon">icon</h5>
+              <p class="temp">temp</p>
+              <p class="wind">wind speed</p>
+              <p class="humidity">humidity</p>
+            </div>
+          </div>
+          <div id="day5" class="card text-white bg-info mb-3" style="max-width: 18rem;">
+            <div class="card-body">
+              <h4 class="date">date</h4>
+              <h5 class="icon">icon</h5>
+              <p class="temp">temp</p>
+              <p class="wind">wind speed</p>
+              <p class="humidity">humidity</p>
+            </div>
+          </div>
         </section>
       </div>
     </div>

@@ -7,3 +7,13 @@
     border: 1px;
 
   } 
+
+ .weather-cards{
+    display: flex;
+    justify-content: space-around;
+ }
+
+ .today{
+    border: 1px dashed;
+    background-color: beige;
+ }
