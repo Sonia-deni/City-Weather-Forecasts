@@ -1,5 +1,32 @@
-var cities = ["Manchester", "Bangkok", "Przemysl", "Edinburgh", "Dublin"];
+var cities = ["Manchester", "Bangkok", "Przemysl", "Edinburgh", "New York"];
 var APIKey = "fab2f8aed7f362e666aa16a01a05d5ed";
+
+
+$( document ).ready(function() {
+    
+    $(".city-button").on("click", function (event) {
+        event.preventDefault();
+        console.log("clicked");
+        var cityClicked = $(this).attr("data-name");
+        getCityWeather(cityClicked);
+    });
+    
+    $(".search-button").on("click", function (event) {
+        event.preventDefault();
+        var city = $('#search-input').val().trim();
+        if(city){
+            if(!cities.includes(city)){
+                cities.push(city);
+            }
+            getCityWeather(city);
+            renderButtons();
+        }
+        else{
+            alert("Nothing in search box");
+        }
+    });
+}); 
+
 
 function renderButtons() {
   $(".weather-hr").empty();
@@ -15,25 +42,8 @@ function renderButtons() {
   }
 }
 
-$(".search-button").on("click", function (event) {
-    event.preventDefault();
-    var city = $('#search-input').val().trim();
-    if(city){
-        cities.push(city);
-        getCityWeather(city);
-    }
-    else{
-        alert("Nothing in search box");
-    }
 
-   $(".city-button").on("click", function (event) {
-        event.preventDefault();
-        var city = $(this).attr("data-name");
-        getCityWeather(city);
-      
-    });
 
-});
 
 renderButtons();
 
@@ -51,7 +61,8 @@ function getCityWeather(city){
         $('.date-today').text(currentTime);
         var iconAddress = "http://openweathermap.org/img/wn/" + response.weather[0].icon + "@2x.png";
         $('.icon-today').attr("src", iconAddress);
-        $('.temp-today').text("Temperature: " + response.main.temp + " °C");
+        var tempInCelcius = parseFloat((response.main.temp)-273.15).toFixed(2);
+        $('.temp-today').text("Temperature: " + tempInCelcius + " °C");
         $('.wind-today').text("Wind Speed: " + response.wind.speed + " KPH");
         $('.humidity-today').text("Humidity: " + response.main.humidity + "%");
 console.log(response)
