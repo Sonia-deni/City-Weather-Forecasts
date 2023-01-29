@@ -1,34 +1,42 @@
 var cities = ["Manchester", "Bangkok", "Przemysl", "Edinburgh", "New York"];
 var APIKey = "fab2f8aed7f362e666aa16a01a05d5ed";
 renderButtons();
+getCityWeather(cities[0]);
+
 
 $( document ).ready(function() {
-    
-    $(".city-button").on("click", function (event) {
-        event.preventDefault();
-        console.log("clicked");
-        var cityClicked = $(this).attr("data-name");
-        getCityWeather(cityClicked);
-    });
-    
     $(".search-button").on("click", function (event) {
         event.preventDefault();
         var city = $('#search-input').val().trim();
         if(city){
             if(!cities.includes(city)){
                 cities.push(city);
+                localStorage.setItem("cities", JSON.stringify(cities));
             }
-            getCityWeather(city);
             renderButtons();
+            getCityWeather(city);
         }
         else{
             alert("Nothing in search box");
         }
+    
     });
-}); 
+    
+    $(".city-button").on("click", function (event) {
+        event.preventDefault();
+        var cityClicked = $(this).attr("data-name");
+        getCityWeather(cityClicked);
+        
+    });
+});
 
 function renderButtons() {
+  var checkSaved = JSON.parse(localStorage.getItem("cities"));
+  if(checkSaved){
+    cities = checkSaved;
+  }
   $(".weather-hr").empty();
+  
   for (var i = 0; i < cities.length; i++) {
     var a = $("<button>");
     a.addClass("city-button");
@@ -37,7 +45,6 @@ function renderButtons() {
     $(".weather-hr").append(a);
   }
 }
-
 
 function getCityWeather(city){
     var queryURLGeo = "https://api.openweathermap.org/data/2.5/weather?q="+ city + "&appid=" + APIKey;
@@ -70,7 +77,6 @@ function getCityWeather(city){
     });
 }
 
-
 function displayWeatherForecast(fiveDay){
     var weatherDay = []; 
     for (var i=0; i<fiveDay.length; i=i+8){
@@ -94,3 +100,4 @@ function displayWeatherForecast(fiveDay){
         $('.humidity'+i).text("Humidity: "+ weatherDay[i].main.humidity + " %");
     }
 }
+
