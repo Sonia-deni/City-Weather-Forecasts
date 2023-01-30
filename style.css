@@ -1,5 +1,4 @@
 
-
   .city-button, .search-button {
     margin: 5px;
     padding: 5px;
@@ -14,8 +13,9 @@
  }
 
  .today{
-    border: 1px dashed;
-    background-color: beige;
+    border: 2px dashed;
+    margin-bottom: 2rem;
+    background-color: #c5d5c5;
  }
 
  .weather-hr{
@@ -24,8 +24,17 @@
  }
 
  .form-input{
+   margin-top: 0.5rem;
    margin-bottom: 1rem;
    width: 100%;
  }
 
- 
+ .card-body{
+   background-color: #9fa9a3;
+   border: 2px dashed;
+ }
+
+ .center{
+   text-align: center;
+ }
+   
