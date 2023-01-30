@@ -1,10 +1,11 @@
 
 
-  .city-button {
-    display: block;
+  .city-button, .search-button {
     margin: 5px;
     padding: 5px;
     border: 1px;
+    border-radius: 0.2rem;
+    width: 100%;
   } 
 
  .weather-cards{
@@ -16,3 +17,15 @@
     border: 1px dashed;
     background-color: beige;
  }
+
+ .weather-hr{
+   display: block;
+   width: 100%;
+ }
+
+ .form-input{
+   margin-bottom: 1rem;
+   width: 100%;
+ }
+
+ 

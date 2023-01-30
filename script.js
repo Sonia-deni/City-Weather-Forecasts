@@ -26,14 +26,14 @@ function renderButtons() {
   if(checkSaved){
     cities = checkSaved;
   }
-  $(".weather-hr").empty();
+  $(".list-group").empty();
   //create and append the buttons for each city in the array
   for (var i = 0; i < cities.length; i++) {
     var a = $("<button>");
-    a.addClass("city-button");
+    a.addClass("city-button btn-secondary btn-block");
     a.attr("data-name", cities[i]);
     a.text(cities[i]);
-    $(".weather-hr").append(a);
+    $(".list-group").append(a);
   }
   //add the event listener once the buttons have been appended, so that it is always up to date
   $(".city-button").on("click", function (event) {
