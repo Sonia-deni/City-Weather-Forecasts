@@ -50,7 +50,7 @@ Here is a mock up of the page:
 
 ## Link to deployed application
 
-https://sonia-deni.github.io/Weather-Dashboard/
+https://sonia-deni.github.io/City-Weather-Forecasts/
 
 ## License
 
